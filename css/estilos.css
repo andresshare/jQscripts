@@ -1,0 +1,20 @@
+.azul{
+color:lime;
+}
+
+.rojo{
+    color:violet;
+}
+
+.caja{
+    width: 300px;
+    height: 300px;
+    background-color: aqua;
+    margin: 0,auto;
+    border: 1px solid red;
+    box-shadow:1px,1px,12px black;
+}
+
+.transition{
+    transition:all 1s ease-in-out;
+}
