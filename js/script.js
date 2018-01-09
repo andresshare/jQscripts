@@ -348,4 +348,492 @@ function clasePersona() {
   this.nombre ="silvia"
   this.apellido="corso"
   this.edad = 34
+  this.pais ="UK"
+  this.imprimirInformation = function () {
+    console.log(this.nombre + ' ' + this.apellido + ' ' + this.edad);
+    
+
+  }
 }
+clasePersona.prototype.imprimirInformation = function () {
+  console.log(this.nombre + ' ' + this.apellido + ' ' + this.edad);
+  
+} //añade datos con tipo prototype  para que no se repitan con los objetos
+ //en general las funciones
+
+var variablePersona = new clasePersona()
+console.log(variablePersona);
+
+var Prototipo = new clasePersona()
+
+Number.prototype.esPosiivo = function () {
+  if (this > 0) {
+    return true
+  }
+  else {
+    return false
+  }
+}
+  //functiones anonimas
+
+  (function () {
+
+    var numero = 10 //variable global
+    
+    function cambiarA() {
+      return numero = 23
+    }
+
+    console.log(numero);
+  
+  }())
+
+//Uso funcion anonima 
+
+function ejecutarFuncion(fn) {
+  if ( fn() === 1) {
+  return true
+
+  } else {
+    return false
+    
+
+  }
+  
+}
+
+console.log(
+
+  //llama a ejecutar funcion
+    
+    ejecutarFuncion(function () {
+    
+    console.log("funcion anonima");
+    return 1
+
+  })
+
+);
+
+
+//typeof
+function identifica (param) {
+  console.log(typeof param);
+  if (typeof param === "function") {
+    param();
+  }
+  else {
+    console.log(param)
+  }
+    
+}
+
+function personaTipoOf() {
+  
+}
+
+var juan = new personaTipoOf()
+
+identifica(function () {
+  console.log("funcion anonima con Typeof");
+  
+})
+identifica(function () {
+  console.log(1);
+
+})
+
+
+//Arrays
+var arr = [5, 4, 3, 2, 1]
+console.log(arr);
+console.log(arr[0], arr[3]);
+
+//reverse
+arr.reverse()
+console.log(arr);
+
+//map
+arr = arr.map(function (elem) {
+  elem *= elem
+  return elem
+})
+
+console.log(arr);
+
+//map uso dos
+arr = arr.map(Math.sqrt)
+console.log(arr)
+
+
+//join
+
+arr = arr.join("|")
+console.log(arr);
+
+//split
+
+arr = arr.split("|")
+console.log(arr);
+
+
+
+//arr push //cuando se coloca se reinicia la matriz abajo
+
+// arr = arr.push("6")
+// console.log(arr);
+
+
+//unshift
+
+arr.unshift("0")
+console.log(arr);
+
+
+//.toString
+console.log(arr.toString());
+
+//Pop
+
+var eliminaUltimoElemento = arr.pop()
+console.log(eliminaUltimoElemento, "Elemento eliminado" + eliminaUltimoElemento);
+
+
+arr.splice(1,1,"10","20","30")
+console.log(arr);
+
+
+arr = arr.slice(0, 2)
+console.log(arr);
+
+
+
+var arr = [
+  true,
+  {
+    nombre: "arreglo",
+    apellido: "objeto"
+  },
+  false,
+  function () { 
+    console.log("adentro del arreglo");
+  },
+  function (persona) {
+    console.log(persona.nombre +' '+persona.apellido)
+  },
+  
+
+  [
+    "carla",
+    "natalia",
+    "monica",
+    [
+      "milena",
+      "paola",
+      "catalina"
+    ]
+  ]
+
+
+]
+
+console.log(arr.length);
+console.log(arr);
+console.log(arr[0])
+console.log(arr[1].nombre+""+arr[1].apellido)
+
+arr[3]()
+arr[3](arr[1]); //areglo y funcion
+
+
+console.log(arr[4][3]);
+console.log(arr[4][3]);
+
+
+var arreglo2 = arr[5][3]
+arreglo2[0] = "nuevoNombre"
+console.log(arreglo2);
+
+//Arguments
+
+// var arguments = 20;
+// function funcionArgumentos(a,b,c,d) {
+//   if (arguments.length !==4) {
+//     console.error("La funcion necesita 4 paramentros")
+//     return   
+//   }
+  
+//   console.log(a + b + c + d)
+  
+  
+// }
+// funcionArgumentos(10,20,30)
+
+
+//sobrecarga de operadores
+
+function crearProducto(nomnbre,precio) {
+  nombre = nombre || "sin nombre"
+  precio = precio || 0
+  console.log("Producto", nombre, 'Precio', precio);
+  
+  
+}
+
+function crearProducto100(nombre) {
+  crearProducto(nombre, 10)
+}
+
+function crearProductoCamisa(precio) {
+  crearProducto("camisa",precio)
+}
+crearProducto("lapiz")
+crearProducto100("masProducto")
+crearProductoCamisa(23)
+
+//Polimorfismo
+
+function DeterminaDato(dato) {
+  if (dato==undefined) {
+    console.log("dato, es 'undefinded'");
+  }
+  if (typeof dato === "number") {
+    console.log("Es un numero dato, y hago operaciones con numeros");
+    
+  }
+
+  if (typeof dato === "texto") {
+    console.log("Es un numero dato, y hago operaciones con textos");
+
+  }
+  if (typeof dato === "object") {
+    console.log("Es un objeto dato, pero puede ser cualquier cosa");
+  }
+  if (dato instanceof Number) {
+    console.log("Dato es un objeto numerico");
+    
+  }
+}
+
+DeterminaDato(2)
+
+//funciones  y su contexto
+
+//arreglo de funciones
+// function funcionConConTexto() {
+//   var arr_ = []
+//   var numero = 1
+  
+ 
+//   for (var numero = 1; numero <= 3; numero++) {
+//     arr_.push(
+//       (function numero() { //funcion anonima
+//         return function () {
+//           console.log(numero);
+
+//         }
+//       })(numero)
+//     );
+//   }
+//    return arr; 
+//   }
+ 
+  
+
+
+// var funcionesencontexto = funcionConConTexto()
+// funcionesencontexto[0]()
+// funcionesencontexto[1]()
+// funcionesencontexto[2]()
+
+
+//Objet Number
+
+var numeroUno =10
+var numeroDos = new Number(10)
+
+
+//objecto Booleano
+var aBoolean = new Boolean ("-2")
+console.log(aBoolean);
+
+//objeto fecha
+
+var hoy = new Date()
+var fechaMilisegundos = new Date(1)
+// formato : var fechaFija = new Date(anio, mes, dia, hora, min, segundo, mili)
+var fechaFija = new Date(2090, 10, 21, 23, 10, 15, 1)
+console.log(hoy);
+console.log(fechaMilisegundos);
+console.log(fechaFija);
+
+
+console.log(hoy.getFullYear() + 1);
+console.log(hoy.Date);
+console.log(hoy.getHours);
+console.log(hoy.getMilliseconds);
+console.log(hoy.getSeconds);
+console.log(hoy.getTime); //milisegundos
+
+//calcula tiempo de respuesta
+
+var inicio = new Date()
+
+for (i = 0; i <= 15000; i++) {
+  
+  console.log("Procesando")
+}
+
+var fin = new Date();
+
+// console.log(inicio);
+// console.log(fin);
+
+var duracion = fin.getTime() - inicio.getTime()
+console.log(duracion, "milisegundos");
+console.log(duracion/1000, "segundos");
+
+///operaciones con fechas
+
+var fechaFinal = new Date(2016,10,20)
+console.log(fechaFinal);
+
+// fechafinal.setDate(31)
+// console.log(fechaFinal);
+
+Date.prototype.sumarDias= function (dias) {
+  this.setDate(this.getDate()+dias)
+  return this
+}
+Date.prototype.sumarAnios = function (anios) {
+  this.setFullYear(this.getFullYear() + anios)
+  return this
+}
+
+
+//Suma dias
+console.log(fechaFinal);
+console.log(fechaFinal.sumarDias(5));
+
+//suma años
+console.log(fechaFinal);
+console.log(fechaFinal.sumarAnios(5));
+
+//objeto Math
+
+var PI = Math.PI
+var E = Math.E;
+console.log(PI);
+console.log(E);
+
+//expresiones regulares
+
+var reg = RegExp("a")
+var reg = /a/;
+var texto = "Hola Mundo"
+
+var arr = texto.match(reg)
+console.log(arr);
+
+
+
+//Cookies
+
+//validar el estado de la cookie
+
+// var demo = "123; 123&123/"
+// console.log(demo);
+// console.log(escape(demo));
+// console.log(unescape(demo));
+
+//guardar dato de cookie"
+//document.cookie = "datos:eldatoqueguarde";
+
+// function crearCookie(nopmbre, valor) {
+//   valor =escape(valor)
+//   var hoy = new Date()
+//   hoy.setMonth(hoy.getMonth()+1)
+//   document.cookie = nombre + "= " + valor + ";expires=".toUTCString()+";";
+// }
+// function borrarCookie() {
+//   var hoy = new Date()
+//   hoy.setMonth(hoy.getMonth() + 1)
+
+//   document.cookie = nombre + "= x" + valor + ";expires=".toUTCString() + ";";
+// }
+
+
+// function getCookie(nombre) {
+//   // var cookies = document.cookie;
+  
+//   var cookieArr = cookies.split(";")
+//   console.log(cookieArr);
+//   for (var i = 0; i < cookieArr.length; i++) {
+  
+//     var parArr = cookieArr[i].split("=")
+//     cookieArr[i] = parArr;
+//     if (parArr[0] == nombre) {
+//       return unscape(parArr[1])
+//     }
+//   }
+//   return undefined
+// }
+
+// console.log(getCookie("direccion"));
+
+//codigo testCookie
+// crearCookie("nombre", "Fernanda")
+// console.log(cookies);
+// crearCookie("nombre:", "Fernanda")
+// crearCookie("correo:", "Fernanda@hotmail.com")
+// crearCookie("ciudad:", "SanJose,")
+// borrarCookie("nombre");
+
+
+///
+
+
+
+//funciones
+var a = 29
+var b = 234
+var c=(a<b)?function () {
+  console.log("A es mayor que B");
+  return a;
+}(): function () {
+  console.log("B es mayor que A");
+  return a;
+}
+console.log(c);
+
+
+//objetos json
+var objetoJS = {
+  nombre: "Iron Man",
+  poder: 234
+}
+
+console.log("Objeto literal", objetoJS);
+var jsonString =JSON.stringify(objetoJS)
+console.log(jsonString);
+var objetoDesdeJson = JSON.parse(jsonString)
+console.log(objetoDesdeJson);
+console.log(objetoDesdeJson.nombre);
+console.log(objetoDesdeJson.poder);
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
